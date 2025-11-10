@@ -105,7 +105,6 @@ TOPDOER_TESTCASE/
  
 **Request**
 ```json
-json
 {
   "status": "in progress"
 }
