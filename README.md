@@ -38,6 +38,22 @@ TOPDOER_TESTCASE/
 └── README.md - Документация
 ```
 
+## Модель данных
+
+### Поля инцидента:
+
+- `id` (integer) - уникальный идентификатор
+- `description` (string) - описание проблемы
+- `status` (enum) - статус обработки:
+  - `new` - новый инцидент
+  - `in progress` - в работе  
+  - `closed` - закрыт
+- `source` (enum) - источник сообщения:
+  - `operator` - оператор
+  - `monitoring` - система мониторинга
+  - `partner` - партнёр
+- `create_dt` (datetime) - дата и время создания
+
 ## API
 
 ### Получить все инциденты
@@ -50,11 +66,28 @@ TOPDOER_TESTCASE/
 [
   {
     "id": 1,
+    "description": "Самокат сломался",
+    "status": "new",
+    "source": "operator",
+    "create_dt": "2025-11-10T03:57:24.369233"
+  },
+  {
+    "id": 2,
     "description": "Самокат не в сети",
-    "status": "new", 
+    "status": "new",
     "source": "monitoring",
-    "create_dt": "2024-01-15T10:30:00"
-  }
+    "create_dt": "2025-11-10T01:04:20"
+  },
+  {
+    "id": 3,
+    "description": "Точка проката не отвечает",
+    "status": "in progress",
+    "source": "operator",
+    "create_dt": "2025-11-10T01:04:20"
+  },
+
+  ...
+
 ]
 ```
 
@@ -67,24 +100,32 @@ TOPDOER_TESTCASE/
 ```json
 [
   {
+    "id": 3,
     "description": "Точка проката не отвечает",
     "status": "in progress",
-    "source": "operator"
+    "source": "operator",
+    "create_dt": "2025-11-10T01:04:20"
   },
   {
+    "id": 6,
     "description": "Проблема с оплатой",
     "status": "in progress",
-    "source": "partner"
+    "source": "partner",
+    "create_dt": "2025-11-10T01:04:20"
   },
   {
+    "id": 8,
     "description": "GPS не определяет локацию",
     "status": "in progress",
-    "source": "monitoring"
+    "source": "monitoring",
+    "create_dt": "2025-11-10T01:04:20"
   },
   {
+    "id": 10,
     "description": "Сервер лежит",
     "status": "in progress",
-    "source": "monitoring"
+    "source": "monitoring",
+    "create_dt": "2025-11-10T01:04:20"
   }
 ]
 ```
