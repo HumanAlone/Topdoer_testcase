@@ -1,3 +1,4 @@
+from datetime import datetime
 from enum import Enum
 
 from pydantic import BaseModel
@@ -13,6 +14,14 @@ class SourceEnum(str, Enum):
     OPERATOR = "operator"
     MONITORING = "monitoring"
     PARTNER = "partner"
+
+
+class IncidentResponse(BaseModel):
+    id: int
+    description: str
+    status: StatusEnum
+    source: SourceEnum
+    create_dt: datetime
 
 
 class Incident(BaseModel):

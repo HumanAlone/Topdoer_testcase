@@ -6,12 +6,12 @@ from sqlalchemy.orm import Session
 
 from .database import get_db
 from .models import Incidents
-from .schemas import Incident, IncidentUpdate
+from .schemas import Incident, IncidentUpdate, IncidentResponse
 
 app = FastAPI()
 
 
-@app.get("/incident")
+@app.get("/incident", response_model=list[IncidentResponse])
 async def get_incident_by_status(status: str | None = None, db: Session = Depends(get_db)) -> list[Incident]:
     query = select(Incidents)
     if status:
