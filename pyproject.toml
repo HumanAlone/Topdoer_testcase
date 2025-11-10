@@ -1,0 +1,21 @@
+[tool.ruff]
+line-length = 150
+select = ["E", "W", "F", "C", "N", "D", "I", "S", "B", "A", "T", "Q"]
+ignore = ["E501", "D103", "D101", "D100"]  # Игнорировать предупреждения о длине строки
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]  # Игнорировать неиспользуемые импорты в __init__.py
+
+[tool.ruff.isort]
+known-third-party = ["fastapi", "pydantic", "sqlalchemy"]
+
+[tool.ruff.mccabe]
+max-complexity = 10
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = "double"
+inline-quotes = "double"
+multiline-quotes = "double"
